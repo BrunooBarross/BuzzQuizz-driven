@@ -13,7 +13,7 @@ function erroQuizzes(erro){
 }
 function renderizarQuizzes(quizz){
     console.log(quizzes);
-    limpaQuizzes();
+    limparQuizzes();
     quizzes = quizz.data;    
     let conteudo = document.querySelector(".todos-quizzes");
     for(i = 0; i<quizzes.length; i++){
@@ -25,7 +25,7 @@ function renderizarQuizzes(quizz){
         `;      
     }
 }
-function limpaQuizzes(){
+function limparQuizzes(){
     let divQuizzes = document.querySelector(".todos-quizzes");
     while(divQuizzes.firstChild){
         divQuizzes.removeChild(divQuizzes.firstChild);
