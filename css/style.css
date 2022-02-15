@@ -1,3 +1,4 @@
+/*Aqui inicia todo o css da pagina inicial do projeto*/
 body{
     background-color: #FAFAFA;
 }
@@ -175,7 +176,10 @@ section{
     padding-bottom: 7px;
     color: #FFFFFF;
 }
-@media (max-width: 1100px) {	  
+/*Finaliza estilo da pagina inicial do projeto*/
+
+@media (max-width: 1100px) {
+    /*Inicio mobile pagina inicial*/	  
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
     /*--------------  Escondendo o scroll das páginas ---------------------*/
     @-moz-document url-prefix() { /* Disable scrollbar Firefox */
@@ -230,5 +234,5 @@ section{
     .posts:nth-last-child(1){
         margin-bottom: 14px;
     }
-    
+    /*Fim mobile tela inicial*/
 }
