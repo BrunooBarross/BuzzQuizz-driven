@@ -1,5 +1,7 @@
 let quizzes = [];
+
 getQuizzes();
+setInterval(getQuizzes,10000);
 
 function getQuizzes(){
     const resposta = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
@@ -11,6 +13,7 @@ function erroQuizzes(erro){
 }
 function renderizarQuizzes(quizz){
     console.log(quizzes);
+    limpaQuizzes();
     quizzes = quizz.data;    
     let conteudo = document.querySelector(".todos-quizzes");
     for(i = 0; i<quizzes.length; i++){
@@ -21,5 +24,11 @@ function renderizarQuizzes(quizz){
                 </div>      
         `;      
     }
+}
+function limpaQuizzes(){
+    let divQuizzes = document.querySelector(".todos-quizzes");
+    while(divQuizzes.firstChild){
+        divQuizzes.removeChild(divQuizzes.firstChild);
+    }   
 }
     
