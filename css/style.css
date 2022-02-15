@@ -130,7 +130,7 @@ header{
     text-align: center;
     color: #000000;
 }
-section{
+.secao{
     width: 1051px;
     margin-top: 77px;
     box-sizing: border-box;
