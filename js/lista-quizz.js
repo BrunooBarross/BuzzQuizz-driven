@@ -20,7 +20,7 @@ function renderizarQuizzes(quizz){
         conteudo.innerHTML += `    
                 <div class="posts">
                     <img src="${quizzes[i].image}" alt="">
-                    <span class="posts-titulo">${quizzes[i].title}</span>
+                    <p class="posts-titulo">${quizzes[i].title}</p>
                 </div>      
         `;      
     }

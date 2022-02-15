@@ -161,20 +161,19 @@ section{
     position: relative;
 }
 .posts-titulo{
-    width: 301px;
+    overflow-wrap: break-word; 
+    overflow: hidden;
+    max-width: 301px;
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 21px;
+    bottom: 7px;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 19px;
     line-height: 22px;
     display: flex;
-    align-items: center;
-    padding-left: 18px;
-    padding-right: 21px;
-    padding-bottom: 7px;
+    align-items: center;     
     color: #FFFFFF;
 }
 /*Finaliza estilo da pagina inicial do projeto*/
@@ -222,11 +221,12 @@ section{
     section{
         width: 350px;  
         margin-top: 35px; 
+
     }
     .todos-quizzes{
         width: 350px;
         flex-direction: column;  
-        align-items: center;           
+        align-items: center;      
     }    
     .posts{
        margin-right: 0px;
