@@ -95,3 +95,45 @@ function questionsSubmit(button){
     forms[1].classList.toggle("disabled")
     forms[2].classList.toggle("disabled")
 }
+
+function createNewQuestion(obj){
+    
+    obj.setAttribute("onclick", "clearForm(this)")
+    obj.parentNode.parentNode.innerHTML += `
+    <div class="double-input-box question">
+        <input type="text" placeholder="Texto da pergunta" />
+        <input type="text" placeholder="Cor de fundo da pergunta" />
+    </div>
+    <label for="">Resposta correta</label>
+    <div class="double-input-box correct">
+        <input type="text" placeholder="Resposta correta" />
+        <input type="url" placeholder="URL da imagem" />
+    </div>
+    <label for="">Respostas incorretas</label>
+    <div class="double-input-box incorrect">
+        <input type="text" placeholder="Resposta incorreta 1" />
+        <input type="url" placeholder="URL da imagem 1" />
+    </div>
+    <div class="double-input-box incorrect">
+        <input type="text" placeholder="Resposta incorreta 2" />
+        <input type="url" placeholder="URL da imagem 2" />
+    </div>
+    <div class="double-input-box incorrect">
+        <input type="text" placeholder="Resposta incorreta 3" />
+        <input type="url" placeholder="URL da imagem 3" />
+    </div>`
+
+    
+
+    console.log(obj)
+}
+
+function clearForm(obj){
+    obj.setAttribute("onclick", "createNewQuestion(this)")
+    obj.parentNode.parentNode.innerHTML = `
+    <div class="create-label">
+        <label for="">Pergunta 2</label>
+        <ion-icon name="create-outline" onclick="createNewQuestion(this)"></ion-icon>
+    </div>`
+
+}

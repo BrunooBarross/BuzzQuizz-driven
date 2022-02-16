@@ -51,7 +51,7 @@
 
         <!-- Forms pages-->
         <main class="forms" >
-            <article class="form-list" >
+            <article class="form-list disabled" >
                 <p class="title-form">Comece pelo começo</p>
                 <form action="">
                     <div>
@@ -64,7 +64,7 @@
                 <button class="form-button" onclick="basicInfoSubmit(this)">Prosseguir para criar perguntas</button>
             </article>
 
-            <article class="form-list disabled">
+            <article class="form-list">
                 <p class="title-form">Crie suas perguntas</p>
                 <form action="">
                     <div>
@@ -95,13 +95,17 @@
                 </form>
                 <form action="" class="create">
                     <div>
-                        <label for="">Pergunta 2</label>
-                        <ion-icon name="create-outline" onclick="createNewQuestion()"></ion-icon>
+                        <div class="create-label">
+                            <label for="">Pergunta 2</label>
+                            <ion-icon name="create-outline" onclick="createNewQuestion(this)"></ion-icon>
+                        </div>
                     </div>
                     <form action="" class="create">
                         <div>
-                            <label for="">Pergunta 3</label>
-                            <ion-icon name="create-outline"></ion-icon>
+                            <div class="create-label">
+                                <label for="">Pergunta 3</label>
+                                <ion-icon name="create-outline" onclick="createNewQuestion(this)"></ion-icon>
+                            </div>
                         </div>
                         
                         

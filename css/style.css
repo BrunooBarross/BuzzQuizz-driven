@@ -248,12 +248,17 @@ input::placeholder{
     margin: 16px 0;
 }
 
-.create > div{
+.create-label{
+    align-items: center;
     display: flex;
     justify-content: space-between;
 }
 
-.create > div > ion-icon{
+.create-label > label{
+    font-size: 20px;
+}
+
+.create-label > ion-icon{
     cursor: pointer;
     font-size: 26px;
 }
