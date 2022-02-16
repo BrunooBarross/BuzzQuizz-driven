@@ -48,28 +48,50 @@ function questionsSubmit(button){
 
     let regexHexa = '^#[A-Fa-f0-9]{6}$'
     let regexUrl = '^(http|https)://.+\.jpg|\.png|\.svg'
+    let hasWrong = 0
 
-    let input_box = button.parentNode.querySelectorAll(".double-input-box")
+    let input_box = button.parentNode.querySelectorAll(".question")
 
-    if(input_box[0].firstElementChild.value === "" || input_box[0].lastElementChild.value ==="" 
-    || input_box[1].firstElementChild.value === "" || input_box[1].lastElementChild.value ===""){
-        alert("Não deixe os campos de pergunta e de resposta correta vazios!")
+    for(let i=0; i<input_box.length; i++){
+        if(input_box[i].firstElementChild.value === "" || input_box[i].lastElementChild.value ===""){
+            alert("Não deixe os campos de pergunta e de resposta correta vazios!")
+            return
+        }
+        if(input_box[i].firstElementChild.value < 20){
+            alert("O título da pergunta não pode conter menos do que 20 caracteres")
+            return
+        }
+    
+        if(!input_box[i].lastElementChild.value.match(regexHexa)){
+            alert("A cor de fundo deve estar no formato hexadecimal de 6 dígitos. ex:#12f45A")
+            return
+        }
+    }
+
+    input_box = button.parentNode.querySelectorAll(".correct")
+    for(let i=0; i<input_box.length; i++){
+        if(input_box[i].firstElementChild.value === "" || input_box[i].lastElementChild.value ===""){
+            alert("Não deixe os campos de pergunta e de resposta correta vazios!")
+            return
+        }
+        if(!input_box[i].lastElementChild.value.match(regexUrl)){
+            alert("Digite a url da imagem corretamente e com o padrão https:// ou http://")
+            return
+        }
+    }
+
+    input_box = button.parentNode.querySelectorAll(".incorrect")
+    for(let i=0; i<input_box.length; i++){
+        if(input_box[i].firstElementChild !== "" && input_box[i].lastElementChild.value.match(regexUrl)){
+            hasWrong++
+        }
+    }
+    if(hasWrong < input_box.length/3){
+        alert("A pergunta precisa de pelo menos uma resposta errada preenchida corretamente")
         return
     }
 
-    if(input_box[0].firstElementChild.value < 20){
-        alert("O título da pergunta não pode conter menos do que 20 caracteres")
-        return
-    }
-
-    if(!input_box[0].lastElementChild.value.match(regexHexa)){
-        alert("A cor de fundo deve estar no formato hexadecimal de 6 dígitos. ex:#12f45A")
-        return
-    }
-
-    if(!input_box[1].lastElementChild.value.match(regexUrl)){
-        alert("Digite a url da imagem corretamente e com o padrão https:// ou http://")
-        return
-    }
-
+    let forms = button.parentNode.parentNode.querySelectorAll(".form-list")
+    forms[1].classList.toggle("disabled")
+    forms[2].classList.toggle("disabled")
 }
