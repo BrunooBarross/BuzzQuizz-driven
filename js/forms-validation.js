@@ -80,9 +80,10 @@ function questionsSubmit(button){
         }
     }
 
+    //#FIXME se mandar uma pergunta com duas respostas incorretas e uma sem nenhuma ele passa
     input_box = button.parentNode.querySelectorAll(".incorrect")
     for(let i=0; i<input_box.length; i++){
-        if(input_box[i].firstElementChild !== "" && input_box[i].lastElementChild.value.match(regexUrl)){
+        if(input_box[i].firstElementChild.value !== "" && input_box[i].lastElementChild.value.match(regexUrl)){
             hasWrong++
         }
     }
