@@ -281,6 +281,10 @@ input::placeholder{
     color: #818181;
     margin-top: 9px;
 }
+
+.disabled{
+    display: none;
+}
 /*Finaliza estilo da pagina inicial do projeto*/
 
 @media (max-width: 1100px) {

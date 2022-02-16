@@ -1,20 +1,27 @@
-function basicInfoSubmit(button){
-
-    let regex = '^(http|https)://.+\.jpg|\.png|\.svg'
-
-    let inputs = [...button.parentNode.querySelectorAll("input")]
-
+function filledInputs(inputs, minimum){
     let filledInputs = inputs.filter(element => {
         if(element.value !== ""){
             return true
         }
     });
 
-    if(filledInputs.length < inputs.length){
+    if(filledInputs.length < minimum){
+        return false
+    }
+    return true
+}
+
+function basicInfoSubmit(button){
+
+    let regex = '^(http|https)://.+\.jpg|\.png|\.svg'
+
+    let inputs = [...button.parentNode.querySelectorAll("input")]
+
+    if(!filledInputs(inputs, inputs.length)){
         alert("Preencha todos os campos")
         return
     }
-    if(inputs[0].value.length<20 || filledInputs[0].value.length>65){
+    if(inputs[0].value.length<20 || inputs[0].length>65){
         alert("O título deve ter entre 20 e 65 caracteres")
         inputs[0].classList.add("invalid")
         return
@@ -32,5 +39,37 @@ function basicInfoSubmit(button){
         return
     }
 
-    alert("deu certo")
+    let forms = button.parentNode.parentNode.querySelectorAll(".form-list")
+    forms[0].classList.toggle("disabled")
+    forms[1].classList.toggle("disabled")
+}
+
+function questionsSubmit(button){
+
+    let regexHexa = '^#[A-Fa-f0-9]{6}$'
+    let regexUrl = '^(http|https)://.+\.jpg|\.png|\.svg'
+
+    let input_box = button.parentNode.querySelectorAll(".double-input-box")
+
+    if(input_box[0].firstElementChild.value === "" || input_box[0].lastElementChild.value ==="" 
+    || input_box[1].firstElementChild.value === "" || input_box[1].lastElementChild.value ===""){
+        alert("Não deixe os campos de pergunta e de resposta correta vazios!")
+        return
+    }
+
+    if(input_box[0].firstElementChild.value < 20){
+        alert("O título da pergunta não pode conter menos do que 20 caracteres")
+        return
+    }
+
+    if(!input_box[0].lastElementChild.value.match(regexHexa)){
+        alert("A cor de fundo deve estar no formato hexadecimal de 6 dígitos. ex:#12f45A")
+        return
+    }
+
+    if(!input_box[1].lastElementChild.value.match(regexUrl)){
+        alert("Digite a url da imagem corretamente e com o padrão https:// ou http://")
+        return
+    }
+
 }
