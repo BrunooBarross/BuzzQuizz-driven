@@ -1,6 +1,11 @@
 /*Aqui inicia todo o css da pagina inicial do projeto*/
+*{
+    box-sizing: border-box;
+}
+
 body{
     background-color: #FAFAFA;
+    font-family: 'Roboto';
 }
 .container{
     width: 100%;
@@ -41,7 +46,6 @@ header{
     margin-top: 77px;
     background: #FAFAFA;
     border: 1px dashed #D5D5D5;
-    box-sizing: border-box;
     border-radius: 5px;
 }
 .nav span{
@@ -64,7 +68,6 @@ header{
     height: 40px;
     background: #FAFAFA;
     border: 1px dashed #EC362D;
-    box-sizing: border-box;
     border-radius: 50px;
     cursor: pointer;
 
@@ -82,7 +85,6 @@ header{
     width: 1051px;
     margin-top: 77px;
     background: #FAFAFA;
-    box-sizing: border-box;
     border-radius: 5px;   
     
 }
@@ -110,12 +112,11 @@ header{
     width: 340px;
     height: 181px;
     margin-right: 10px;
-    box-sizing: border-box;
     position: relative;
 }
 .meus-quizzes img{
-    width: 340px;
-    height: 181px;
+    width: 100%;
+    height: 100%;
     border-radius: 5px;
     filter: brightness(58%);
 }
@@ -130,23 +131,22 @@ header{
     text-align: center;
     color: #000000;
 }
-.secao{
+
+section{
     width: 1051px;
     margin-top: 77px;
-    box-sizing: border-box;
 }
+
 .todos-quizzes{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    box-sizing: border-box;
     margin-top: 12px;
 }
 .posts{
     position: relative;
     width: 340px;
     height: 181px;
-    box-sizing: border-box;
     margin-right: 10px;
     margin-top: 12px;
 }
@@ -165,7 +165,7 @@ header{
     overflow: hidden;
     max-width: 301px;
     position: absolute;
-    right: 21px;
+    left: 18px;
     bottom: 7px;
     font-family: Roboto;
     font-style: normal;
@@ -175,6 +175,111 @@ header{
     display: flex;
     align-items: center;     
     color: #FFFFFF;
+}
+
+.form-button{
+    cursor: pointer;
+    color: #FFF5F4;
+    font-size: 21px;
+    margin: 0 auto;
+    background-color: #EC362D;
+    border-radius: 15px;
+    height: 54px;
+    width: 20%;
+    min-width: 324px;
+    border: none;
+    margin: 81px auto 0 auto;
+}
+
+.title-form{
+    font-family: 'Roboto';
+    font-weight: 700;
+    text-align: center;
+    font-size: 23px;
+    margin-top: 63px;
+}
+
+form{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+form > div{
+    margin: 27px auto 0px auto;
+    padding: 21px 20px 24px 16px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    width: 600px;
+    background-color: #fff;
+}
+
+form > div > label{
+    text-align: start;
+    font-size: 20px;
+}
+
+input{
+    font-family: 'Roboto';
+    font-size: 19px;
+    padding-left: 23px;
+    margin-top: 9px;
+    height: 46px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #D1D1D1;
+}
+
+input::placeholder{
+    color: #BABABA;
+    font-family: 'Roboto';
+    font-size: 19px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.form-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.double-input-box{
+    margin: 16px 0;
+}
+
+.create > div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.create > div > ion-icon{
+    cursor: pointer;
+    font-size: 26px;
+}
+
+.finish-form > .meus-quizzes{
+    width: 500px;
+    height: 266px;
+    margin: 46px auto 0 auto;
+}
+
+.finish-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.finish-form > button{
+    margin-top: 45px;
+    height: 44px;
+    min-width: auto;
+    max-width: 220px;
+}
+
+.finish-form > button:last-of-type{
+    background-color: transparent;
+    color: #818181;
+    margin-top: 9px;
 }
 /*Finaliza estilo da pagina inicial do projeto*/
 
@@ -201,7 +306,6 @@ header{
         margin-top: 38px;          
     }
     .nav{
-        box-sizing: border-box;
         width: 340px;
         margin-top: 31px;
     }
@@ -237,3 +341,4 @@ header{
     }
     /*Fim mobile tela inicial*/
 }
+

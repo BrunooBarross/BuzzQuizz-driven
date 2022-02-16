@@ -21,12 +21,12 @@
             <h1 class="titulo">BuzzQuizz</h1>
         </header>
         <!-- Aqui inicia a página principal do projeto-->
-        <main class="index">
-            <nav class="nav">
+        <main class="index" style="display: none;">
+            <nav class="nav" >
                 <span>Você não criou nenhum quizz ainda :(</span>
                 <button class="criar-quiz">Criar Quizz</button>
             </nav>
-            <nav class="nav-quiz">
+            <nav class="nav-quiz" style="display: none;">
                 <span class="nav-add">Seus Quizzes<ion-icon name="add-circle"></ion-icon></span>
                 <div class="nav-flex">
                     <div class="meus-quizzes">
@@ -48,6 +48,103 @@
             </section>
         </main>
         <!-- Aqui Finaliza a página inicial do projeto-->
+
+        <main class="forms" >
+            <article class="form-list" style="display: none">
+                <p class="title-form">Comece pelo começo</p>
+                <form action="">
+                    <div>
+                        <input type="text" placeholder="Título do seu quizz" />
+                        <input type="url" placeholder="URL da imagem do seu quizz" />
+                        <input type="number" placeholder="Quantidade de perguntas do quizz" />
+                        <input type="text" placeholder="Quantidade de níveis do quizz" />
+                    </div>
+                </form>
+                <button class="form-button" onclick="submitForm(this)">Prosseguir para criar perguntas</button>
+            </article>
+
+            <article class="form-list" style="display: none">
+                <p class="title-form">Crie suas perguntas</p>
+                <form action="">
+                    <div>
+                        <label for="">Pergunta 1</label>
+                        <div class="double-input-box">
+                            <input type="text" placeholder="Texto da pergunta" />
+                            <input type="text" placeholder="Cor de fundo da pergunta" />
+                        </div>
+                        <label for="">Resposta correta</label>
+                        <div class="double-input-box">
+                            <input type="text" placeholder="Resposta correta" />
+                            <input type="text" placeholder="URL da imagem" />
+                        </div>
+                        <label for="">Respostas incorretas</label>
+                        <div class="double-input-box">
+                            <input type="text" placeholder="Resposta incorreta 1" />
+                            <input type="text" placeholder="URL da imagem 1" />
+                        </div>
+                        <div class="double-input-box">
+                            <input type="text" placeholder="Resposta incorreta 2" />
+                            <input type="text" placeholder="URL da imagem 2" />
+                        </div>
+                        <div class="double-input-box">
+                            <input type="text" placeholder="Resposta incorreta 3" />
+                            <input type="text" placeholder="URL da imagem 3" />
+                        </div>
+                    </div>
+                </form>
+                <form action="" class="create">
+                    <div>
+                        <label for="">Pergunta 2</label>
+                        <ion-icon name="create-outline"></ion-icon>
+                    </div>
+                    <form action="" class="create">
+                        <div>
+                            <label for="">Pergunta 3</label>
+                            <ion-icon name="create-outline"></ion-icon>
+                        </div>
+                        <button class="form-button">Prosseguir para criar níveis</button>
+
+
+                    </form>
+            </article>
+
+            <article class="form-list" style="display: none">
+                <p class="title-form">Agora, decida os níveis</p>
+
+                <form action="">
+                    <div>
+                        <label for="">Nível 1</label>
+                        <input type="text" placeholder="Título do nível">
+                        <input type="text" placeholder="% de acerto mínima">
+                        <input type="text" placeholder="URL da imagem do nível">
+                        <input type="text" placeholder="Descrição do nível">
+                    </div>
+                </form>
+                <form action="" class="create">
+                    <div>
+                        <label for="">Nível 2</label>
+                        <ion-icon name="create-outline"></ion-icon>
+                    </div>
+                    <form action="" class="create">
+                        <div>
+                            <label for="">Nível 3</label>
+                            <ion-icon name="create-outline"></ion-icon>
+                        </div>
+                        <button class="form-button">Finalizar Quizz</button>
+            </article>
+
+            <article class="finish-form" >
+                <p class="title-form">Seu quizz está pronto</p>
+                <div class="meus-quizzes">
+                    <img src="https://observatoriog.bol.uol.com.br/wordpress/wp-content/uploads/2018/11/Os-Simpsons.jpg" alt="">
+                    <span class="posts-titulo">O quão Potterhead é você?</span>
+                </div>
+
+                <button class="form-button">Acessar Quizz</button>
+                <button class="form-button">Voltar pra home</button>
+            </article>
+        </main>
+
     </div>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
