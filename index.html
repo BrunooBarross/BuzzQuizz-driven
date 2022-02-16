@@ -50,7 +50,7 @@
         <!-- Aqui Finaliza a página inicial do projeto-->
 
         <main class="forms" >
-            <article class="form-list" style="display: none">
+            <article class="form-list" >
                 <p class="title-form">Comece pelo começo</p>
                 <form action="">
                     <div>
@@ -60,7 +60,7 @@
                         <input type="text" placeholder="Quantidade de níveis do quizz" />
                     </div>
                 </form>
-                <button class="form-button" onclick="submitForm(this)">Prosseguir para criar perguntas</button>
+                <button class="form-button" onclick="basicInfoSubmit(this)">Prosseguir para criar perguntas</button>
             </article>
 
             <article class="form-list" style="display: none">
@@ -133,7 +133,7 @@
                         <button class="form-button">Finalizar Quizz</button>
             </article>
 
-            <article class="finish-form" >
+            <article class="finish-form" style="display: none">
                 <p class="title-form">Seu quizz está pronto</p>
                 <div class="meus-quizzes">
                     <img src="https://observatoriog.bol.uol.com.br/wordpress/wp-content/uploads/2018/11/Os-Simpsons.jpg" alt="">
@@ -149,6 +149,7 @@
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/lista-quizz.js"></script>
+    <script src="js/forms-validation.js"></script>
 </body>
 
 
