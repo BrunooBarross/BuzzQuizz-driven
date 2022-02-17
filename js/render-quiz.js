@@ -4,8 +4,8 @@ let arrayOpcoes;
 let postQuestoes;
 
 //setTimeout(()=>{        
-//    exibirQuizz(2377);        
-//},2300); 
+//   exibirQuizz('teste',2583);        
+//},3500); 
 function exibirQuizz(div ,id) {
     let banner = document.querySelector(".banner");
     let postPergunta = document.querySelector(".quizz");
@@ -44,17 +44,29 @@ function exibirQuizz(div ,id) {
         postQuestoes = document.querySelector(".respostasI"+i);
         for(j = 0; j < arrayOpcoes.length; j++){
             postQuestoes.innerHTML += `                     
-                <div class="resposta">
+                <div class="resposta" onclick="proximaPergunta()">
                     <img src=${arrayOpcoes[j].image}>
                     <p>${arrayOpcoes[j].text}</p>
                 </div>       
             `;            
         }            
     }
-    resetPosts();
+    
 }
 function sortFuncao(){
     arrayOpcoes.sort( function () {
         return 0.5 - Math.random();
     });
+}
+let teste=1;
+function proximaPergunta(){
+    if(teste < arrayQuestoes.length && teste != 0){
+        postQuestoes = document.querySelector(".respostasI"+teste);
+        postQuestoes = postQuestoes.parentElement;    
+        postQuestoes.scrollIntoView()  
+        teste ++;
+    }else{
+        teste = 0;
+    }
+    
 }
