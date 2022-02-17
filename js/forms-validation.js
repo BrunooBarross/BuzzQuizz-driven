@@ -80,16 +80,22 @@ function questionsSubmit(button){
         }
     }
 
-    //#FIXME se mandar uma pergunta com duas respostas incorretas e uma sem nenhuma ele passa
-    input_box = button.parentNode.querySelectorAll(".incorrect")
+    input_box = button.parentNode.querySelectorAll("form")
     for(let i=0; i<input_box.length; i++){
-        if(input_box[i].firstElementChild.value !== "" && input_box[i].lastElementChild.value.match(regexUrl)){
-            hasWrong++
+        hasWrong = 0
+        let wrongAnswers = input_box[i].querySelectorAll(".incorrect")
+        if(wrongAnswers.length !== 0){
+            for(let j=0; j<wrongAnswers.length; j++){
+                if(wrongAnswers[j].firstElementChild.value !== "" && wrongAnswers[j].lastElementChild.value.match(regexUrl)){
+                    hasWrong++
+                }
+            }
+            if(hasWrong<1){
+                alert("A pergunta precisa de pelo menos uma resposta errada preenchida corretamente")
+                return
+            }
         }
-    }
-    if(hasWrong < input_box.length/3){
-        alert("A pergunta precisa de pelo menos uma resposta errada preenchida corretamente")
-        return
+
     }
 
     let forms = button.parentNode.parentNode.querySelectorAll(".form-list")
@@ -97,9 +103,60 @@ function questionsSubmit(button){
     forms[2].classList.toggle("disabled")
 }
 
+function levelSubmit(button){
+
+    let regexUrl = '^(http|https)://.+\.jpg|\.png|\.svg'
+
+    let forms_box = [...button.parentNode.querySelectorAll("form")]
+
+    for(let i=0; i<forms_box.length; i++){
+        let inputs = forms_box[i].querySelectorAll("input")
+        if(parseInt(inputs.length) !== 0){
+            if(inputs[0].value.length < 10){
+                alert("O título do nível não pode conter menos de 10 caracteres")
+                return
+            }
+            if(parseInt(inputs[1].value) <0 || parseInt(inputs[1].value) > 100 || inputs[1].value === ""){
+                alert("A porcentagem deve estar entre 0 e 100")
+                return
+            }
+            if(!inputs[2].value.match(regexUrl)){
+                alert("Digite a url da imagem corretamente e com o padrão https:// ou http://")
+                return
+            }
+            if(inputs[3].value.length < 30){
+                alert("A descrição do nível deve conter pelo menos 30 caracteres")
+                return
+            }
+        }
+    }
+
+    button.parentNode.classList.toggle("disabled")
+    document.querySelector(".finish-form").classList.toggle("disabled")
+}
+
+function createNewLevel(obj){
+    obj.setAttribute("onclick", "clearNewLevel(this)")
+    obj.parentNode.parentNode.innerHTML += `
+    <input type="text" placeholder="Título do nível">
+    <input type="number" placeholder="% de acerto mínima" value="0">
+    <input type="url" placeholder="URL da imagem do nível">
+    <input type="text" placeholder="Descrição do nível">
+    `
+}
+
+function clearNewLevel(obj){
+    obj.setAttribute("onclick", "createNewLevel(this)")
+    obj.parentNode.parentNode.innerHTML = `
+    <div class="create-label">
+        <label for="">Nível 2</label>
+        <ion-icon name="create-outline" onclick="createNewLevel(this)"></ion-icon>
+    </div>`
+}
+
 function createNewQuestion(obj){
     
-    obj.setAttribute("onclick", "clearForm(this)")
+    obj.setAttribute("onclick", "clearFormNewQuestion(this)")
     obj.parentNode.parentNode.innerHTML += `
     <div class="double-input-box question">
         <input type="text" placeholder="Texto da pergunta" />
@@ -123,13 +180,9 @@ function createNewQuestion(obj){
         <input type="text" placeholder="Resposta incorreta 3" />
         <input type="url" placeholder="URL da imagem 3" />
     </div>`
-
-    
-
-    console.log(obj)
 }
 
-function clearForm(obj){
+function clearFormNewQuestion(obj){
     obj.setAttribute("onclick", "createNewQuestion(this)")
     obj.parentNode.parentNode.innerHTML = `
     <div class="create-label">

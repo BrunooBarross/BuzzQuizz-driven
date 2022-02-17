@@ -64,7 +64,7 @@
                 <button class="form-button" onclick="basicInfoSubmit(this)">Prosseguir para criar perguntas</button>
             </article>
 
-            <article class="form-list">
+            <article class="form-list disabled">
                 <p class="title-form">Crie suas perguntas</p>
                 <form action="">
                     <div>
@@ -110,20 +110,18 @@
                     </div>
                 </form>
                         
-                        
-                </form>
                 <button class="form-button" onclick="questionsSubmit(this)">Prosseguir para criar níveis</button>
             </article>
 
-            <article class="form-list disabled">
+            <article class="form-list">
                 <p class="title-form">Agora, decida os níveis</p>
 
                 <form action="">
                     <div>
                         <label for="">Nível 1</label>
                         <input type="text" placeholder="Título do nível">
-                        <input type="text" placeholder="% de acerto mínima">
-                        <input type="text" placeholder="URL da imagem do nível">
+                        <input type="number" placeholder="% de acerto mínima" value="0">
+                        <input type="url" placeholder="URL da imagem do nível">
                         <input type="text" placeholder="Descrição do nível">
                     </div>
                 </form>
@@ -131,7 +129,7 @@
                     <div>
                         <div class="create-label">
                             <label for="">Nível 2</label>
-                            <ion-icon name="create-outline"></ion-icon>
+                            <ion-icon name="create-outline" onclick="createNewLevel(this)"></ion-icon>
                         </div>
                     </div>
                 </form>
@@ -139,11 +137,11 @@
                     <div>
                         <div class="create-label">
                             <label for="">Nível 3</label>
-                            <ion-icon name="create-outline"></ion-icon>
+                            <ion-icon name="create-outline" onclick="createNewLevel(this)"></ion-icon>
                         </div>
                     </div>
                 </form>
-                <button class="form-button">Finalizar Quizz</button>
+                <button onclick="levelSubmit(this)" class="form-button">Finalizar Quizz</button>
             </article>
 
             <article class="finish-form disabled">
