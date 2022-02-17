@@ -94,6 +94,7 @@ header{
     overflow-x: scroll;
 }
 .nav-add{
+    cursor: pointer;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;

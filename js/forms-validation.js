@@ -1,3 +1,8 @@
+function redirectCreateQuizz(){
+    document.querySelector(".index").classList.toggle("disabled")
+    document.querySelector(".forms").classList.toggle("disabled")
+}
+
 function filledInputs(inputs, minimum){
     let filledInputs = inputs.filter(element => {
         if(element.value !== ""){
@@ -105,8 +110,8 @@ function questionsSubmit(button){
 
 function levelSubmit(button){
 
+    let minLevel = 0
     let regexUrl = '^(http|https)://.+\.jpg|\.png|\.svg'
-
     let forms_box = [...button.parentNode.querySelectorAll("form")]
 
     for(let i=0; i<forms_box.length; i++){
