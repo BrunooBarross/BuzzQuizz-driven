@@ -125,6 +125,9 @@ function levelSubmit(button){
                 alert("A porcentagem deve estar entre 0 e 100")
                 return
             }
+            if(parseInt(inputs[1].value) === 0){
+                minLevel++
+            }
             if(!inputs[2].value.match(regexUrl)){
                 alert("Digite a url da imagem corretamente e com o padrão https:// ou http://")
                 return
@@ -134,6 +137,9 @@ function levelSubmit(button){
                 return
             }
         }
+    }
+    if(minLevel<1){
+        alert("Pelo menos um dos níveis deve ter o mínimo de acerto referente a 0%")
     }
 
     button.parentNode.classList.toggle("disabled")
