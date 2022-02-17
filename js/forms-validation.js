@@ -140,6 +140,7 @@ function levelSubmit(button){
     }
     if(minLevel<1){
         alert("Pelo menos um dos níveis deve ter o mínimo de acerto referente a 0%")
+        return
     }
 
     button.parentNode.classList.toggle("disabled")
