@@ -50,7 +50,7 @@
         <!-- Aqui Finaliza a página inicial do projeto-->
 
         <!-- Forms pages-->
-        <main class="forms" >
+        <main class="forms disabled">
             <article class="form-list disabled" >
                 <p class="title-form">Comece pelo começo</p>
                 <form action="">
@@ -160,42 +160,9 @@
         <!--end Forms pages-->
 
         <!--Quizz Page-->
-        <main class="quizz">
-            <div class="banner">
-                <img src="https://observatoriog.bol.uol.com.br/wordpress/wp-content/uploads/2018/11/Os-Simpsons.jpg">
-                <span class="titulo-quizz">${quizzEscolhido.title}</span>
-            </div>
-
-            <div class="post-pergunta">
-                <div class="faixa-pergunta">
-                    <span>
-                        vvvvv fgf ghfghfg hfghf ghfgh fghf ghfgh fgh
-                    </span>
-                </div>
-                <div class="respostas">
-                    <div class="resposta">
-                        <img src="https://observatoriog.bol.uol.com.br/wordpress/wp-content/uploads/2018/11/Os-Simpsons.jpg"
-                            alt="">
-                        <p>oba oba oba oba</p>
-                    </div>
-                    <div class="resposta">
-                        <img src="https://observatoriog.bol.uol.com.br/wordpress/wp-content/uploads/2018/11/Os-Simpsons.jpg"
-                            alt="">
-                        <p>oba oba oba oba</p>
-                    </div>
-                    <div class="resposta">
-                        <img src="https://observatoriog.bol.uol.com.br/wordpress/wp-content/uploads/2018/11/Os-Simpsons.jpg"
-                            alt="">
-                        <p>oba oba oba oba</p>
-                    </div>
-                    <div class="resposta">
-                        <img src="https://observatoriog.bol.uol.com.br/wordpress/wp-content/uploads/2018/11/Os-Simpsons.jpg"
-                            alt="">
-                        <p>oba oba oba oba</p>
-                    </div>
-                </div>
-            </div>
-            <div class="resultado-final">
+        <main class="quizz disabled">
+            <div class="banner"></div>            
+            <div class="resultado-final" style="display: none;">
                 <div class="resultado">
                     <div class="faixa-resultado">
                         <span>fgdfghfdg fghfg hfghfg hfghfg yfgh fgh </span>
@@ -218,6 +185,7 @@
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/lista-quizz.js"></script>
+    <script src="js/render-quiz.js"></script>
     <script src="js/forms-validation.js"></script>
 </body>
 

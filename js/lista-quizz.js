@@ -1,7 +1,10 @@
 let quizzes = [];
 
-getQuizzes();
-setInterval(getQuizzes,10000);
+setTimeout(()=>{        
+    getQuizzes();        
+ },3000); 
+//setInterval(getQuizzes,10000);
+getQuizzes(); 
 
 function getQuizzes(){
     const resposta = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
@@ -12,13 +15,12 @@ function erroQuizzes(erro){
     console.log('Deu erro ai fera');
 }
 function renderizarQuizzes(quizz){
-    console.log(quizzes);
     limparQuizzes();
     quizzes = quizz.data;    
     let conteudo = document.querySelector(".todos-quizzes");
     for(i = 0; i<quizzes.length; i++){
         conteudo.innerHTML += `    
-                <div class="posts">
+                <div class="posts" onclick="exibirQuizz(this,'${quizzes[i].id}')">
                     <img src="${quizzes[i].image}" alt="">
                     <p class="posts-titulo">${quizzes[i].title}</p>
                 </div>      
