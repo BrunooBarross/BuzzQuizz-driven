@@ -3,8 +3,7 @@ let ultimoQuizz;
 let comparadorQuizz = false;
 let indexInicial = 50;
 
-setInterval(getQuizzes,2000);
-getQuizzes(); 
+setInterval(getQuizzes,1000);
 
 function getQuizzes(){
     const resposta = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
