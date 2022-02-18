@@ -120,34 +120,58 @@ function scrollarPagina(contador){
 function renderizarResultado(){
    arrayNiveis = quizzEscolhido.levels;
    resultadoUsuario = Math.round((resultadoUsuario * 100)/arrayQuestoes.length);
-   for(let i = 1; i<arrayNiveis.length; i++){
-       if(resultadoUsuario<arrayNiveis[i].minValue){
-            postPergunta.innerHTML += `                     
-                <div class="resultado-final">
-                    <div class="resultado">
-                        <div class="faixa-resultado">
-                            <span>${arrayNiveis[i].title}</span>
-                        </div>
-                        <div class="resultado-info">
-                            <img src=${arrayNiveis[i].image}>
-                            <span>${arrayNiveis[i].text}</span>
-                        </div>
+   if(resultadoUsuario==arrayNiveis[0].minValue){
+        postPergunta.innerHTML += `                     
+            <div class="resultado-final">
+                <div class="resultado">
+                    <div class="faixa-resultado">
+                        <span>${arrayNiveis[0].title}</span>
                     </div>
-                    <div class="reiniciar">
-                        <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
-                        <span>Voltar para home</span>
+                    <div class="resultado-info">
+                        <img src=${arrayNiveis[0].image}>
+                        <span>${arrayNiveis[0].text}</span>
                     </div>
-                </div>       
-            `; 
-        break;   
+                </div>
+                <div class="reiniciar">
+                    <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+                    <span>Voltar para home</span>
+                </div>
+            </div>       
+        `;
+        resultadoUsuario = 0;
+        chamarResultado = 0;
+        setTimeout(()=>{        
+            scrollarResultado();        
+        },2000);   
+    }else{
+        for(let i = 1; i<arrayNiveis.length; i++){
+            if(resultadoUsuario<arrayNiveis[i].minValue){
+                 postPergunta.innerHTML += `                     
+                     <div class="resultado-final">
+                         <div class="resultado">
+                             <div class="faixa-resultado">
+                                 <span>${arrayNiveis[i].title}</span>
+                             </div>
+                             <div class="resultado-info">
+                                 <img src=${arrayNiveis[i].image}>
+                                 <span>${arrayNiveis[i].text}</span>
+                             </div>
+                         </div>
+                         <div class="reiniciar">
+                             <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+                             <span>Voltar para home</span>
+                         </div>
+                     </div>       
+                 `; 
+             break;   
+             }
         }
-   }
+    }   
    resultadoUsuario = 0;
    chamarResultado = 0;
    setTimeout(()=>{        
         scrollarResultado();        
-    },2000);
-   
+    },2000);   
 }
 function scrollarResultado(){
     let conteudoFinal = document.querySelector(".quizz");
