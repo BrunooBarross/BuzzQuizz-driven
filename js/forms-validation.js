@@ -1,3 +1,4 @@
+
 let objQuizz = {
     title: '',
     image: '',
@@ -5,10 +6,9 @@ let objQuizz = {
     levels: []
 }
 
-function redirectCreateQuizz(){
-    document.querySelector(".index").classList.toggle("disabled")
-    document.querySelector(".forms").classList.toggle("disabled")
-}
+let ids = JSON.parse(localStorage.getItem('ids')) || []
+
+let id = 0
 
 function filledInputs(inputs, minimum){
     let filledInputs = inputs.filter(element => {
@@ -194,9 +194,24 @@ function levelSubmit(button){
 
     let promisse = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", objQuizz)
 
-    promisse.then(()=>{
+    promisse.then((obj)=>{
+
+        let finish_form = document.querySelector(".finish-form")
+
+        id = obj.data.id
+
+        console.log(obj.data, id)
+
+        ids.push(id)
+
+        localStorage.setItem("ids", JSON.stringify(ids))
+
+        finish_form.querySelector("img").setAttribute("src", obj.data.image)
+        finish_form.querySelector("span").innerText = obj.data.title
+        finish_form.querySelector("button").setAttribute("onclick", `exibirQuizz(${id})`)
+
         document.querySelectorAll(".form-list")[2].classList.toggle("disabled")
-        document.querySelector(".finish-form").classList.toggle("disabled")
+        finish_form.classList.toggle("disabled")
     })
     
     promisse.catch((error)=>{
@@ -204,6 +219,8 @@ function levelSubmit(button){
     })
 }
 
+
+//#FIXME: Fazer com que os inputs apenas sejam escondidos e não criados
 function createNewLevel(obj){
     obj.setAttribute("onclick", "clearNewLevel(this)")
     obj.parentNode.parentNode.innerHTML += `
@@ -260,8 +277,3 @@ function clearFormNewQuestion(obj){
     </div>`
 
 }
-
-// function postQuizz(){
-
-
-// }
