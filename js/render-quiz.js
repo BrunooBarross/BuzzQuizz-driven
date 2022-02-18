@@ -2,13 +2,15 @@ let quizzEscolhido;
 let arrayQuestoes;
 let arrayOpcoes;
 let postQuestoes;
-
+let resultadoUsuario = 0;
+let arrayNiveis;
+let postPergunta;
 //setTimeout(()=>{        
 //   exibirQuizz('teste',2583);        
 //},3500); 
 function exibirQuizz(div ,id) {
     let banner = document.querySelector(".banner");
-    let postPergunta = document.querySelector(".quizz");
+    postPergunta = document.querySelector(".quizz");
     for (let i = 0; i < quizzes.length; i++) {
         if (id == quizzes[i].id) {
             quizzEscolhido = quizzes[i];
@@ -62,6 +64,7 @@ function sortFuncao(){
 let respostaEscolhida;
 let filhosResposta;
 let contador;
+let chamarResultado = 0;
 let divPai;
 function respostaUsuario(div){  
     divPai = div.parentElement;
@@ -72,6 +75,7 @@ function respostaUsuario(div){
         for(let i = 0; i< filhosResposta.length; i++){
             if(filhosResposta[i] == div){                 
                 if(filhosResposta[i].getAttribute("data-boolean") === 'true'){
+                    resultadoUsuario = resultadoUsuario + 1;
                     filhosResposta[i].classList.add("certo");
                     filhosResposta[i].setAttribute("onClick","");
                 }else if(filhosResposta[i].getAttribute("data-boolean") === 'false'){
@@ -91,9 +95,17 @@ function respostaUsuario(div){
                 }
             } 
         }
+    
     }       
-    contador = contador + 1;
-    scrollarPagina(contador);    
+    contador++;
+    chamarResultado++;
+    setTimeout(()=>{        
+        scrollarPagina(contador);        
+     },2000);     
+    if(chamarResultado == arrayQuestoes.length){
+        renderizarResultado();
+    }
+       
 }
 
 function scrollarPagina(contador){
@@ -102,4 +114,41 @@ function scrollarPagina(contador){
         postQuestoes = postQuestoes.parentElement;    
         postQuestoes.scrollIntoView()  
     }
+}
+function renderizarResultado(){
+   arrayNiveis = quizzEscolhido.levels;
+   resultadoUsuario = Math.round((resultadoUsuario * 100)/arrayQuestoes.length);
+   for(let i = 1; i<arrayNiveis.length; i++){
+       if(resultadoUsuario<arrayNiveis[i].minValue){
+            postPergunta.innerHTML += `                     
+                <div class="resultado-final">
+                    <div class="resultado">
+                        <div class="faixa-resultado">
+                            <span>${arrayNiveis[i].title}</span>
+                        </div>
+                        <div class="resultado-info">
+                            <img src=${arrayNiveis[i].image}>
+                            <span>${arrayNiveis[i].text}</span>
+                        </div>
+                    </div>
+                    <div class="reiniciar">
+                        <button>Reiniciar Quizz</button>
+                        <span>Voltar para home</span>
+                    </div>
+                </div>       
+            `; 
+        break;   
+        }
+   }
+   resultadoUsuario = 0;
+   chamarResultado = 0;
+   setTimeout(()=>{        
+        scrollarResultado();        
+    },2000);
+   
+}
+function scrollarResultado(){
+    let conteudoFinal = document.querySelector(".quizz");
+    conteudoFinal = conteudoFinal.lastElementChild;    
+    conteudoFinal.scrollIntoView() 
 }
