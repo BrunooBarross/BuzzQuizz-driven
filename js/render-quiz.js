@@ -5,10 +5,12 @@ let postQuestoes;
 let resultadoUsuario = 0;
 let arrayNiveis;
 let postPergunta;
+let idQuizz;
 //setTimeout(()=>{        
 //   exibirQuizz('teste',2583);        
 //},3500); 
-function exibirQuizz(div ,id) {
+function exibirQuizz(id) {
+    idQuizz = id;
     let banner = document.querySelector(".banner");
     postPergunta = document.querySelector(".quizz");
     for (let i = 0; i < quizzes.length; i++) {
@@ -132,7 +134,7 @@ function renderizarResultado(){
                         </div>
                     </div>
                     <div class="reiniciar">
-                        <button>Reiniciar Quizz</button>
+                        <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
                         <span>Voltar para home</span>
                     </div>
                 </div>       
@@ -151,4 +153,11 @@ function scrollarResultado(){
     let conteudoFinal = document.querySelector(".quizz");
     conteudoFinal = conteudoFinal.lastElementChild;    
     conteudoFinal.scrollIntoView() 
+}
+
+function reiniciarQuizz(){
+    let reiniciaConteudo = document.querySelector(".quizz");
+    reiniciaConteudo = reiniciaConteudo.firstElementChild;    
+    reiniciaConteudo.scrollIntoView(); 
+    exibirQuizz(idQuizz);
 }
