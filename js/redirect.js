@@ -11,5 +11,8 @@ function redirectHomePage(){
 function redirectQuizzes(){
     document.querySelector(".index").classList.add("disabled")
     document.querySelector(".forms").classList.add("disabled")
-    document.querySelector(".quizz").classList.toggle("disabled")
+    let reiniciaConteudo = document.querySelector(".quizz");
+    reiniciaConteudo.classList.remove("disabled")
+    reiniciaConteudo = reiniciaConteudo.firstElementChild;    
+    reiniciaConteudo.scrollIntoView();
 }
