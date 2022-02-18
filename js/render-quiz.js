@@ -134,7 +134,7 @@ function renderizarResultado(){
                 </div>
                 <div class="reiniciar">
                     <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
-                    <span>Voltar para home</span>
+                    <span onclick="redirectHomeList()">Voltar para home</span>
                 </div>
             </div>       
         `;
@@ -159,7 +159,7 @@ function renderizarResultado(){
                          </div>
                          <div class="reiniciar">
                              <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
-                             <span>Voltar para home</span>
+                             <span onclick="redirectHomeList()">Voltar para home</span>
                          </div>
                      </div>       
                  `; 
