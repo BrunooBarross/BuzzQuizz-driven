@@ -44,7 +44,7 @@ function exibirQuizz(div ,id) {
         postQuestoes = document.querySelector(".respostasI"+i);
         for(j = 0; j < arrayOpcoes.length; j++){
             postQuestoes.innerHTML += `                     
-                <div class="resposta resposta${j}" data-boolean=${arrayOpcoes[j].isCorrectAnswer} onclick="proximaPergunta(this)">
+                <div class="resposta resposta${j}" data-boolean=${arrayOpcoes[j].isCorrectAnswer} onclick="respostaUsuario(this)">
                     <img src=${arrayOpcoes[j].image}>
                     <p>${arrayOpcoes[j].text}</p>
                 </div>       
@@ -59,14 +59,13 @@ function sortFuncao(){
     });
 }
 
-let teste=1;
 let respostaEscolhida;
 let filhosResposta;
 let contador;
 let divPai;
-function proximaPergunta(div){  
+function respostaUsuario(div){  
     divPai = div.parentElement;
-    contador = divPai.getAttribute("data-value");
+    contador = parseInt(divPai.getAttribute("data-value"));
     if(contador<arrayQuestoes.length){
         respostaEscolhida = document.querySelector(".respostasI"+contador);
         filhosResposta = respostaEscolhida.children;
@@ -93,14 +92,14 @@ function proximaPergunta(div){
             } 
         }
     }       
-    
-    if(teste < arrayQuestoes.length && teste != 0){
-        postQuestoes = document.querySelector(".respostasI"+teste);
+    contador = contador + 1;
+    scrollarPagina(contador);    
+}
+
+function scrollarPagina(contador){
+    if(contador < arrayQuestoes.length && contador != 0){
+        postQuestoes = document.querySelector(".respostasI"+contador);
         postQuestoes = postQuestoes.parentElement;    
         postQuestoes.scrollIntoView()  
-        teste ++;
-    }else{
-        teste = 0;
-    }  
-
+    }
 }
