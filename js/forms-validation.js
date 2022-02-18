@@ -1,3 +1,10 @@
+let objQuizz = {
+    title: '',
+    image: '',
+    questions: [],
+    levels: []
+}
+
 function redirectCreateQuizz(){
     document.querySelector(".index").classList.toggle("disabled")
     document.querySelector(".forms").classList.toggle("disabled")
@@ -44,6 +51,25 @@ function basicInfoSubmit(button){
         return
     }
 
+    objQuizz.title = inputs[0].value
+    objQuizz.image = inputs[1].value
+
+    for (let i = 0; i < parseInt(inputs[2].value); i++) {
+        objQuizz.questions.push({
+            title: '',
+            color: '',
+            answers: []
+        })
+    }
+    for (let i = 0; i < parseInt(inputs[3].value); i++) {
+        objQuizz.levels.push({
+            title: '',
+            image: '',
+            text: '',
+            minValue: 0
+        })   
+    }
+
     let forms = button.parentNode.parentNode.querySelectorAll(".form-list")
     forms[0].classList.toggle("disabled")
     forms[1].classList.toggle("disabled")
@@ -55,7 +81,7 @@ function questionsSubmit(button){
     let regexUrl = '^(http|https)://.+\.jpg|\.png|\.svg'
     let hasWrong = 0
 
-    let input_box = button.parentNode.querySelectorAll(".question")
+    let input_box = [...button.parentNode.querySelectorAll(".question")]
 
     for(let i=0; i<input_box.length; i++){
         if(input_box[i].firstElementChild.value === "" || input_box[i].lastElementChild.value ===""){
@@ -71,6 +97,9 @@ function questionsSubmit(button){
             alert("A cor de fundo deve estar no formato hexadecimal de 6 dígitos. ex:#12f45A")
             return
         }
+
+        objQuizz.questions[i].title = input_box[i].firstElementChild.value
+        objQuizz.questions[i].color = input_box[i].lastElementChild.value
     }
 
     input_box = button.parentNode.querySelectorAll(".correct")
@@ -83,6 +112,15 @@ function questionsSubmit(button){
             alert("Digite a url da imagem corretamente e com o padrão https:// ou http://")
             return
         }
+
+        objQuizz.questions[i].answers.push({
+            text: '',
+            image: '',
+            isCorrectAnswer: false
+        })
+        objQuizz.questions[i].answers[0].text = input_box[i].firstElementChild.value
+        objQuizz.questions[i].answers[0].image = input_box[i].lastElementChild.value
+        objQuizz.questions[i].answers[0].isCorrectAnswer = true
     }
 
     input_box = button.parentNode.querySelectorAll("form")
@@ -92,6 +130,13 @@ function questionsSubmit(button){
         if(wrongAnswers.length !== 0){
             for(let j=0; j<wrongAnswers.length; j++){
                 if(wrongAnswers[j].firstElementChild.value !== "" && wrongAnswers[j].lastElementChild.value.match(regexUrl)){
+                    objQuizz.questions[i].answers.push({
+                        text: '',
+                        image: '',
+                        isCorrectAnswer: false
+                    })
+                    objQuizz.questions[i].answers[objQuizz.questions[i].answers.length-1].text = wrongAnswers[j].firstElementChild.value
+                    objQuizz.questions[i].answers[objQuizz.questions[i].answers.length-1].image = wrongAnswers[j].lastElementChild.value
                     hasWrong++
                 }
             }
@@ -136,6 +181,10 @@ function levelSubmit(button){
                 alert("A descrição do nível deve conter pelo menos 30 caracteres")
                 return
             }
+            objQuizz.levels[i].title = inputs[0].value
+            objQuizz.levels[i].minValue = parseInt(inputs[1].value)
+            objQuizz.levels[i].image = inputs[2].value
+            objQuizz.levels[i].text = inputs[3].value
         }
     }
     if(minLevel<1){
@@ -143,8 +192,16 @@ function levelSubmit(button){
         return
     }
 
-    button.parentNode.classList.toggle("disabled")
-    document.querySelector(".finish-form").classList.toggle("disabled")
+    let promisse = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", objQuizz)
+
+    promisse.then(()=>{
+        document.querySelectorAll(".form-list")[2].classList.toggle("disabled")
+        document.querySelector(".finish-form").classList.toggle("disabled")
+    })
+    
+    promisse.catch((error)=>{
+        console.log(error)
+    })
 }
 
 function createNewLevel(obj){
@@ -203,3 +260,8 @@ function clearFormNewQuestion(obj){
     </div>`
 
 }
+
+// function postQuizz(){
+
+
+// }
