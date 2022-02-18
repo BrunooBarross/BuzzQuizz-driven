@@ -55,7 +55,7 @@ function exibirQuizz(id) {
             `;            
         }            
     }
-    
+    redirectQuizzes()
 }
 function sortFuncao(){
     arrayOpcoes.sort( function () {

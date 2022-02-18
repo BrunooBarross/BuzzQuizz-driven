@@ -204,6 +204,7 @@ function levelSubmit(button){
 
         ids.push(id)
 
+        getQuizzes()
         localStorage.setItem("ids", JSON.stringify(ids))
 
         finish_form.querySelector("img").setAttribute("src", obj.data.image)
