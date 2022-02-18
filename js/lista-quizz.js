@@ -20,7 +20,7 @@ function renderizarQuizzes(quizz){
     let conteudo = document.querySelector(".todos-quizzes");
     for(i = 0; i<quizzes.length; i++){
         conteudo.innerHTML += `    
-                <div class="posts" onclick="exibirQuizz(this,'${quizzes[i].id}')">
+                <div class="posts" onclick="exibirQuizz('${quizzes[i].id}')">
                     <img src="${quizzes[i].image}" alt="">
                     <p class="posts-titulo">${quizzes[i].title}</p>
                 </div>      
