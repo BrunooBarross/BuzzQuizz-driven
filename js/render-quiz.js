@@ -33,7 +33,7 @@ function exibirQuizz(div ,id) {
                         ${arrayQuestoes[i].title}
                     </span>
                 </div>
-                <div class="respostas respostasI${i}">
+                <div class="respostas respostasI${i}" data-value=${i}>
                 
                 </div> 
             </div>              
@@ -44,7 +44,7 @@ function exibirQuizz(div ,id) {
         postQuestoes = document.querySelector(".respostasI"+i);
         for(j = 0; j < arrayOpcoes.length; j++){
             postQuestoes.innerHTML += `                     
-                <div class="resposta" onclick="proximaPergunta()">
+                <div class="resposta resposta${j}" data-boolean=${arrayOpcoes[j].isCorrectAnswer} onclick="proximaPergunta(this)">
                     <img src=${arrayOpcoes[j].image}>
                     <p>${arrayOpcoes[j].text}</p>
                 </div>       
@@ -58,8 +58,42 @@ function sortFuncao(){
         return 0.5 - Math.random();
     });
 }
+
 let teste=1;
-function proximaPergunta(){
+let respostaEscolhida;
+let filhosResposta;
+let contador;
+let divPai;
+function proximaPergunta(div){  
+    divPai = div.parentElement;
+    contador = divPai.getAttribute("data-value");
+    if(contador<arrayQuestoes.length){
+        respostaEscolhida = document.querySelector(".respostasI"+contador);
+        filhosResposta = respostaEscolhida.children;
+        for(let i = 0; i< filhosResposta.length; i++){
+            if(filhosResposta[i] == div){                 
+                if(filhosResposta[i].getAttribute("data-boolean") === 'true'){
+                    filhosResposta[i].classList.add("certo");
+                    filhosResposta[i].setAttribute("onClick","");
+                }else if(filhosResposta[i].getAttribute("data-boolean") === 'false'){
+                    filhosResposta[i].classList.add("errado")
+                    filhosResposta[i].setAttribute("onClick","");
+                }
+            }
+            if(filhosResposta[i] != div){
+                if(filhosResposta[i].getAttribute("data-boolean") === 'true'){
+                    filhosResposta[i].classList.add("certo")
+                    filhosResposta[i].classList.add("opacidade")
+                    filhosResposta[i].setAttribute("onClick","");
+                }else if(filhosResposta[i].getAttribute("data-boolean") === 'false'){
+                    filhosResposta[i].classList.add("errado")
+                    filhosResposta[i].classList.add("opacidade")
+                    filhosResposta[i].setAttribute("onClick","");             
+                }
+            } 
+        }
+    }       
+    
     if(teste < arrayQuestoes.length && teste != 0){
         postQuestoes = document.querySelector(".respostasI"+teste);
         postQuestoes = postQuestoes.parentElement;    
@@ -67,6 +101,6 @@ function proximaPergunta(){
         teste ++;
     }else{
         teste = 0;
-    }
-    
+    }  
+
 }
