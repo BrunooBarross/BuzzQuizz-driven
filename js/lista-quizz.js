@@ -1,9 +1,9 @@
 let quizzes = [];
+let ultimoQuizz;
+let comparadorQuizz = false;
+let indexInicial = 50;
 
-setTimeout(()=>{        
-    getQuizzes();        
- },3000); 
-//setInterval(getQuizzes,10000);
+setInterval(getQuizzes,2000);
 getQuizzes(); 
 
 function getQuizzes(){
@@ -14,11 +14,20 @@ function getQuizzes(){
 function erroQuizzes(erro){
     console.log('Deu erro ai fera');
 }
-function renderizarQuizzes(quizz){
-    limparQuizzes();
+
+function renderizarQuizzes(quizz){    
     quizzes = quizz.data;    
     let conteudo = document.querySelector(".todos-quizzes");
-    for(i = 0; i<quizzes.length; i++){
+    if(comparadorQuizz == true){
+        let j = 0;
+        while(j<50){
+            if(ultimoQuizz == quizzes[j].id){
+                indexInicial = j;
+            }               
+            j++;
+        }       
+    }   
+    for(let i = 0; i<indexInicial; i++){              
         conteudo.innerHTML += `    
                 <div class="posts" onclick="exibirQuizz('${quizzes[i].id}')">
                     <img src="${quizzes[i].image}" alt="">
@@ -26,11 +35,8 @@ function renderizarQuizzes(quizz){
                 </div>      
         `;      
     }
+    ultimoQuizz = quizzes[0].id;
+    comparadorQuizz = true;            
 }
-function limparQuizzes(){
-    let divQuizzes = document.querySelector(".todos-quizzes");
-    while(divQuizzes.firstChild){
-        divQuizzes.removeChild(divQuizzes.firstChild);
-    }   
-}
+
     
