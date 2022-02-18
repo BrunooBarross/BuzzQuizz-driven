@@ -119,42 +119,38 @@ function scrollarPagina(contador){
 }
 function renderizarResultado(){
    arrayNiveis = quizzEscolhido.levels;
-   resultadoUsuario = Math.round((resultadoUsuario * 100)/arrayQuestoes.length);
-   if(resultadoUsuario==arrayNiveis[0].minValue){
-        postPergunta.innerHTML += `                     
-            <div class="resultado-final">
-                <div class="resultado">
-                    <div class="faixa-resultado">
-                        <span>${arrayNiveis[0].title}</span>
-                    </div>
-                    <div class="resultado-info">
-                        <img src=${arrayNiveis[0].image}>
-                        <span>${arrayNiveis[0].text}</span>
-                    </div>
-                </div>
-                <div class="reiniciar">
-                    <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
-                    <span onclick="redirectHomeList()">Voltar para home</span>
-                </div>
-            </div>       
-        `;
-        resultadoUsuario = 0;
-        chamarResultado = 0;
-        setTimeout(()=>{        
-            scrollarResultado();        
-        },2000);   
-    }else{
-        for(let i = 1; i<arrayNiveis.length; i++){
+   resultadoUsuario = Math.round((resultadoUsuario * 100)/arrayQuestoes.length);  
+        for(let i = 0; i<arrayNiveis.length; i++){
+            if(resultadoUsuario==arrayNiveis[0].minValue){
+                postPergunta.innerHTML += `                     
+                    <div class="resultado-final">
+                        <div class="resultado">
+                            <div class="faixa-resultado">
+                                <span>${arrayNiveis[0].title}</span>
+                            </div>
+                            <div class="resultado-info">
+                                <img src=${arrayNiveis[0].image}>
+                                <span>${arrayNiveis[0].text}</span>
+                            </div>
+                        </div>
+                        <div class="reiniciar">
+                            <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+                            <span onclick="redirectHomeList()">Voltar para home</span>
+                        </div>
+                    </div>       
+                `;
+                break;
+            }
             if(resultadoUsuario<arrayNiveis[i].minValue){
                  postPergunta.innerHTML += `                     
                      <div class="resultado-final">
                          <div class="resultado">
                              <div class="faixa-resultado">
-                                 <span>${arrayNiveis[i].title}</span>
+                                 <span>${arrayNiveis[i-1].title}</span>
                              </div>
                              <div class="resultado-info">
-                                 <img src=${arrayNiveis[i].image}>
-                                 <span>${arrayNiveis[i].text}</span>
+                                 <img src=${arrayNiveis[i-1].image}>
+                                 <span>${arrayNiveis[i-1].text}</span>
                              </div>
                          </div>
                          <div class="reiniciar">
@@ -164,9 +160,27 @@ function renderizarResultado(){
                      </div>       
                  `; 
              break;   
+             }else{
+                postPergunta.innerHTML += `                     
+                <div class="resultado-final">
+                    <div class="resultado">
+                        <div class="faixa-resultado">
+                            <span>${arrayNiveis[i].title}</span>
+                        </div>
+                        <div class="resultado-info">
+                            <img src=${arrayNiveis[i].image}>
+                            <span>${arrayNiveis[i].text}</span>
+                        </div>
+                    </div>
+                    <div class="reiniciar">
+                        <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+                        <span onclick="redirectHomeList()">Voltar para home</span>
+                    </div>
+                </div>       
+            `; 
+            break
              }
-        }
-    }   
+        }   
    resultadoUsuario = 0;
    chamarResultado = 0;
    setTimeout(()=>{        
