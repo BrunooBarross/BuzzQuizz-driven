@@ -27,8 +27,7 @@ function exibirQuizz(id) {
                                          
                 `;
 
-    arrayQuestoes = quizzEscolhido.questions;       
-    
+    arrayQuestoes = quizzEscolhido.questions;    
     for(let i = 0; i < arrayQuestoes.length; i++){                  
         postPergunta.innerHTML += `                     
             <div class="post-pergunta">
@@ -143,7 +142,7 @@ function renderizarResultado(){
                 `;
                 break;
             }
-            if(resultadoUsuario > arrayNiveis[cont].minValue){
+            if(resultadoUsuario >= arrayNiveis[cont].minValue){
                 postPergunta.innerHTML += `                     
                     <div class="resultado-final">
                         <div class="resultado">
@@ -182,6 +181,24 @@ function renderizarResultado(){
                         </div>       
                     `; 
                 break;   
+                }else if(resultadoUsuario=arrayNiveis[i].minValue){
+                    postPergunta.innerHTML += `                     
+                        <div class="resultado-final">
+                            <div class="resultado">
+                                <div class="faixa-resultado">
+                                    <span>${arrayNiveis[i].title}</span>
+                                </div>
+                                <div class="resultado-info">
+                                    <img src=${arrayNiveis[i].image}>
+                                    <span>${arrayNiveis[i].text}</span>
+                                </div>
+                            </div>
+                            <div class="reiniciar">
+                                <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+                                <span onclick="redirectHomeList()">Voltar para home</span>
+                            </div>
+                        </div>       
+                    `; 
                 }
                 continue;
             }            
