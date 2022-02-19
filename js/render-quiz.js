@@ -117,9 +117,11 @@ function scrollarPagina(contador){
         postQuestoes.scrollIntoView()  
     }
 }
+
 function renderizarResultado(){
    arrayNiveis = quizzEscolhido.levels;
-   resultadoUsuario = Math.round((resultadoUsuario * 100)/arrayQuestoes.length);  
+   resultadoUsuario = Math.round((resultadoUsuario * 100)/arrayQuestoes.length); 
+   let cont =  arrayNiveis.length - 1;
         for(let i = 1; i<arrayNiveis.length; i++){
             if(resultadoUsuario==arrayNiveis[0].minValue){
                 postPergunta.innerHTML += `                     
@@ -141,46 +143,48 @@ function renderizarResultado(){
                 `;
                 break;
             }
-            if(resultadoUsuario<arrayNiveis[i].minValue){
-                 postPergunta.innerHTML += `                     
-                     <div class="resultado-final">
-                         <div class="resultado">
-                             <div class="faixa-resultado">
-                                 <span>${arrayNiveis[i-1].title}</span>
-                             </div>
-                             <div class="resultado-info">
-                                 <img src=${arrayNiveis[i-1].image}>
-                                 <span>${arrayNiveis[i-1].text}</span>
-                             </div>
-                         </div>
-                         <div class="reiniciar">
-                             <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
-                             <span onclick="redirectHomeList()">Voltar para home</span>
-                         </div>
-                     </div>       
-                 `; 
-             break;   
-             }else{
+            if(resultadoUsuario > arrayNiveis[cont].minValue){
                 postPergunta.innerHTML += `                     
-                <div class="resultado-final">
-                    <div class="resultado">
-                        <div class="faixa-resultado">
-                            <span>${arrayNiveis[i].title}</span>
+                    <div class="resultado-final">
+                        <div class="resultado">
+                            <div class="faixa-resultado">
+                                <span>${arrayNiveis[cont].title}</span>
+                            </div>
+                            <div class="resultado-info">
+                                <img src=${arrayNiveis[cont].image}>
+                                <span>${arrayNiveis[cont].text}</span>
+                            </div>
                         </div>
-                        <div class="resultado-info">
-                            <img src=${arrayNiveis[i].image}>
-                            <span>${arrayNiveis[i].text}</span>
+                        <div class="reiniciar">
+                            <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+                            <span onclick="redirectHomeList()">Voltar para home</span>
                         </div>
-                    </div>
-                    <div class="reiniciar">
-                        <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
-                        <span onclick="redirectHomeList()">Voltar para home</span>
-                    </div>
-                </div>       
-            `; 
-            alert('caiu aqui')
-            break
-             }
+                    </div>       
+                `;
+                break; 
+            }else{
+                if(resultadoUsuario<arrayNiveis[i].minValue){
+                    postPergunta.innerHTML += `                     
+                        <div class="resultado-final">
+                            <div class="resultado">
+                                <div class="faixa-resultado">
+                                    <span>${arrayNiveis[i-1].title}</span>
+                                </div>
+                                <div class="resultado-info">
+                                    <img src=${arrayNiveis[i-1].image}>
+                                    <span>${arrayNiveis[i-1].text}</span>
+                                </div>
+                            </div>
+                            <div class="reiniciar">
+                                <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+                                <span onclick="redirectHomeList()">Voltar para home</span>
+                            </div>
+                        </div>       
+                    `; 
+                break;   
+                }
+                continue;
+            }            
         }   
    resultadoUsuario = 0;
    chamarResultado = 0;
