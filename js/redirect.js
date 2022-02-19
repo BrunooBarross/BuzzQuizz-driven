@@ -24,7 +24,6 @@ function redirectHomeList(){
 }
 function scrollarPaginaHome(){
     let irParaHome = document.querySelector(".index");
-    //irParaHome.classList.add("disabled")
     irParaHome = irParaHome.firstElementChild;    
     irParaHome.scrollIntoView();
 }
