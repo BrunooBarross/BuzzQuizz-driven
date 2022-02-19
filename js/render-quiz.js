@@ -120,7 +120,27 @@ function scrollarPagina(contador){
 function renderizarResultado(){
    arrayNiveis = quizzEscolhido.levels;
    resultadoUsuario = Math.round((resultadoUsuario * 100)/arrayQuestoes.length);  
-        for(let i = 0; i<arrayNiveis.length; i++){            
+        for(let i = 1; i<arrayNiveis.length; i++){
+            if(resultadoUsuario==arrayNiveis[0].minValue){
+                postPergunta.innerHTML += `                     
+                    <div class="resultado-final">
+                        <div class="resultado">
+                            <div class="faixa-resultado">
+                                <span>${arrayNiveis[0].title}</span>
+                            </div>
+                            <div class="resultado-info">
+                                <img src=${arrayNiveis[0].image}>
+                                <span>${arrayNiveis[0].text}</span>
+                            </div>
+                        </div>
+                        <div class="reiniciar">
+                            <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+                            <span onclick="redirectHomeList()">Voltar para home</span>
+                        </div>
+                    </div>       
+                `;
+                break;
+            }
             if(resultadoUsuario<arrayNiveis[i].minValue){
                  postPergunta.innerHTML += `                     
                      <div class="resultado-final">
@@ -158,6 +178,7 @@ function renderizarResultado(){
                     </div>
                 </div>       
             `; 
+            alert('caiu aqui')
             break
              }
         }   
