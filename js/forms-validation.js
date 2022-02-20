@@ -71,6 +71,7 @@ function basicInfoSubmit(button){
     }
 
     createNewQuestion(button.parentNode.parentNode, parseInt(inputs[2].value))
+    createNewLevel(button.parentNode.parentNode, parseInt(inputs[3].value))
 
     let forms = button.parentNode.parentNode.querySelectorAll(".form-list")
     forms[0].classList.toggle("disabled")
@@ -224,30 +225,42 @@ function levelSubmit(button){
 
 
 //#FIXME: Fazer com que os inputs apenas sejam escondidos e não criados
-function createNewLevel(obj){
-    obj.setAttribute("onclick", "clearNewLevel(this)")
-    obj.parentNode.parentNode.innerHTML += `
-    <input type="text" placeholder="Título do nível">
-    <input type="number" placeholder="% de acerto mínima" value="0">
-    <input type="url" placeholder="URL da imagem do nível">
-    <input type="text" placeholder="Descrição do nível">
+function createNewLevel(obj, quantity){
+
+    obj = obj.querySelectorAll(".form-list")[2]
+
+    console.log(obj)
+
+    for(let i=0; i<quantity-1; i++){
+        obj.innerHTML += 
     `
+    <form action="" class="create">
+        <div>
+            <div class="create-label">
+                <label for="">Nível ${i+2}</label>
+                <ion-icon name="create-outline" onclick="toggleView(this)"></ion-icon>
+            </div>
+            <div class="disabled">
+                <input type="text" placeholder="Título do nível">
+                <input type="number" placeholder="% de acerto mínima" value="0">
+                <input type="url" placeholder="URL da imagem do nível">
+                <input type="text" placeholder="Descrição do nível">
+            </div>
+        </div>
+    </form>
+    `
+    }
+    
+    obj.innerHTML += `<button onclick="levelSubmit(this)" class="form-button">Finalizar Quizz</button>`
+    
 }
 
-function clearNewLevel(obj){
-    obj.setAttribute("onclick", "createNewLevel(this)")
-    obj.parentNode.parentNode.innerHTML = `
-    <div class="create-label">
-        <label for="">Nível 2</label>
-        <ion-icon name="create-outline" onclick="createNewLevel(this)"></ion-icon>
-    </div>`
-}
 
 function createNewQuestion(obj, quantity){
     
     obj = obj.querySelectorAll(".form-list")[1]
 
-    for(let i=0; i<quantity;i++){
+    for(let i=0; i<quantity-1;i++){
     obj.innerHTML += `
         <form action="" class="create">
             <div>
