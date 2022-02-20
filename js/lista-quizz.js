@@ -80,7 +80,7 @@ function renderMyQuizzes(){
         }
     }
 
-    if(myQuizzes.querySelectorAll(".meus-quizzes") !== null){
+    if(myQuizzes.querySelectorAll(".meus-quizzes").length !== 0){
         myQuizzes.parentNode.classList.remove("disabled")
         document.querySelector(".nav").classList.add("disabled")
     }
