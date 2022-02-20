@@ -223,8 +223,6 @@ function levelSubmit(button){
     })
 }
 
-
-//#FIXME: Fazer com que os inputs apenas sejam escondidos e não criados
 function createNewLevel(obj, quantity){
 
     obj = obj.querySelectorAll(".form-list")[2]
@@ -244,7 +242,7 @@ function createNewLevel(obj, quantity){
                 <input type="text" placeholder="Título do nível">
                 <input type="number" placeholder="% de acerto mínima" value="0">
                 <input type="url" placeholder="URL da imagem do nível">
-                <input type="text" placeholder="Descrição do nível">
+                <input type="text" placeholder="Descrição do nível" class="text-area">
             </div>
         </div>
     </form>
@@ -254,7 +252,6 @@ function createNewLevel(obj, quantity){
     obj.innerHTML += `<button onclick="levelSubmit(this)" class="form-button">Finalizar Quizz</button>`
     
 }
-
 
 function createNewQuestion(obj, quantity){
     

@@ -184,14 +184,13 @@ section{
     cursor: pointer;
     color: #FFF5F4;
     font-size: 21px;
-    margin: 0 auto;
     background-color: #EC362D;
     border-radius: 15px;
     height: 54px;
     width: 20%;
     min-width: 324px;
     border: none;
-    margin: 81px auto 0 auto;
+    margin: 81px auto 500px auto;
 }
 
 .title-form{
@@ -218,11 +217,11 @@ form > div{
 
 label{
     font-size: 20px;
+    font-weight: 700;
 }
 
 form > div > label{
     text-align: start;
-    font-size: 20px;
 }
 
 input{
@@ -286,6 +285,10 @@ input::placeholder{
     height: 44px;
     min-width: auto;
     max-width: 220px;
+}
+
+.finish-form > .form-button{
+    margin-bottom: 0;
 }
 
 .finish-form > button:last-of-type{
@@ -639,6 +642,31 @@ input::placeholder{
     .reiniciar > span{        
         font-size: 18px;
         line-height: 21px;       
+    }
+
+    .form-button{
+        min-width: 0;
+        width: 86.6%;
+        margin-bottom: 61px;
+    }
+
+    form > div{
+        width: 100vw;
+    }
+
+    .text-area{
+        height: 177px;
+    }
+
+    .text-area::placeholder{
+        position: absolute;
+        top: 13px;
+    }
+
+    .finish-form > .meus-quizzes{
+        width: 90%;
+        max-width: 340px;
+        max-height: 181px;
     }
 }
 
