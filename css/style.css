@@ -110,6 +110,7 @@ header{
     padding-left: 17px;
 }
 .meus-quizzes{
+    cursor: pointer; 
     width: 340px;
     height: 181px;
     margin-right: 10px;
@@ -145,6 +146,7 @@ section{
     margin-top: 12px;
 }
 .posts{
+    cursor: pointer; 
     position: relative;
     width: 340px;
     height: 181px;
