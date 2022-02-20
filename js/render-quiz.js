@@ -162,7 +162,7 @@ function renderizarResultado(){
                 `;
                 break; 
             }else{
-                if(resultadoUsuario<=arrayNiveis[i].minValue){
+                if(resultadoUsuario<arrayNiveis[i].minValue){
                     postPergunta.innerHTML += `                     
                         <div class="resultado-final">
                             <div class="resultado">
@@ -181,6 +181,26 @@ function renderizarResultado(){
                         </div>       
                     `; 
                 break;   
+                }
+                if(resultadoUsuario=arrayNiveis[i].minValue){
+                    postPergunta.innerHTML += `                     
+                        <div class="resultado-final">
+                            <div class="resultado">
+                                <div class="faixa-resultado">
+                                    <span>${arrayNiveis[i].title}</span>
+                                </div>
+                                <div class="resultado-info">
+                                    <img src=${arrayNiveis[i].image}>
+                                    <span>${arrayNiveis[i].text}</span>
+                                </div>
+                            </div>
+                            <div class="reiniciar">
+                                <button onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+                                <span onclick="redirectHomeList()">Voltar para home</span>
+                            </div>
+                        </div>       
+                    `; 
+                    break;   
                 }
                 continue;
             }            
