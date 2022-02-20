@@ -70,6 +70,8 @@ function basicInfoSubmit(button){
         })   
     }
 
+    createNewQuestion(button.parentNode.parentNode, parseInt(inputs[2].value))
+
     let forms = button.parentNode.parentNode.querySelectorAll(".form-list")
     forms[0].classList.toggle("disabled")
     forms[1].classList.toggle("disabled")
@@ -241,40 +243,51 @@ function clearNewLevel(obj){
     </div>`
 }
 
-function createNewQuestion(obj){
+function createNewQuestion(obj, quantity){
     
-    obj.setAttribute("onclick", "clearFormNewQuestion(this)")
-    obj.parentNode.parentNode.innerHTML += `
-    <div class="double-input-box question">
-        <input type="text" placeholder="Texto da pergunta" />
-        <input type="text" placeholder="Cor de fundo da pergunta" />
-    </div>
-    <label for="">Resposta correta</label>
-    <div class="double-input-box correct">
-        <input type="text" placeholder="Resposta correta" />
-        <input type="url" placeholder="URL da imagem" />
-    </div>
-    <label for="">Respostas incorretas</label>
-    <div class="double-input-box incorrect">
-        <input type="text" placeholder="Resposta incorreta 1" />
-        <input type="url" placeholder="URL da imagem 1" />
-    </div>
-    <div class="double-input-box incorrect">
-        <input type="text" placeholder="Resposta incorreta 2" />
-        <input type="url" placeholder="URL da imagem 2" />
-    </div>
-    <div class="double-input-box incorrect">
-        <input type="text" placeholder="Resposta incorreta 3" />
-        <input type="url" placeholder="URL da imagem 3" />
-    </div>`
+    obj = obj.querySelectorAll(".form-list")[1]
+
+    for(let i=0; i<quantity;i++){
+    obj.innerHTML += `
+        <form action="" class="create">
+            <div>
+                <div class="create-label">
+                    <label for="">Pergunta ${i+2}</label>
+                    <ion-icon name="create-outline" onclick="toggleView(this)"></ion-icon>
+                </div>
+                <div class="disabled">
+                    <div class="double-input-box question">
+                        <input type="text" placeholder="Texto da pergunta" />
+                        <input type="text" placeholder="Cor de fundo da pergunta" />
+                    </div>
+                    <label for="">Resposta correta</label>
+                    <div class="double-input-box correct">
+                        <input type="text" placeholder="Resposta correta" />
+                        <input type="url" placeholder="URL da imagem" />
+                    </div>
+                    <label for="">Respostas incorretas</label>
+                    <div class="double-input-box incorrect">
+                        <input type="text" placeholder="Resposta incorreta 1" />
+                        <input type="url" placeholder="URL da imagem 1" />
+                    </div>
+                    <div class="double-input-box incorrect">
+                        <input type="text" placeholder="Resposta incorreta 2" />
+                        <input type="url" placeholder="URL da imagem 2" />
+                    </div>
+                    <div class="double-input-box incorrect">
+                        <input type="text" placeholder="Resposta incorreta 3" />
+                        <input type="url" placeholder="URL da imagem 3" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    `
+    }
+
+    obj.innerHTML +=`<button class="form-button" onclick="questionsSubmit(this)">Prosseguir para criar níveis</button>`
+    
 }
 
-function clearFormNewQuestion(obj){
-    obj.setAttribute("onclick", "createNewQuestion(this)")
-    obj.parentNode.parentNode.innerHTML = `
-    <div class="create-label">
-        <label for="">Pergunta 2</label>
-        <ion-icon name="create-outline" onclick="createNewQuestion(this)"></ion-icon>
-    </div>`
+function toggleView(obj){
 
 }

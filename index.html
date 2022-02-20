@@ -21,7 +21,7 @@
             <h1 class="titulo">BuzzQuizz</h1>
         </header>
         <!-- Aqui inicia a página principal do projeto-->
-        <main class="index">
+        <main class="index disabled">
             <nav class="nav" >
                 <span>Você não criou nenhum quizz ainda :(</span>
                 <button class="criar-quiz" onclick="redirectCreateQuizz()">Criar Quizz</button>
@@ -50,7 +50,7 @@
         <!-- Aqui Finaliza a página inicial do projeto-->
 
         <!-- Forms pages-->
-        <main class="forms disabled">
+        <main class="forms ">
             <article class="form-list" >
                 <p class="title-form">Comece pelo começo</p>
                 <form action="">
@@ -93,24 +93,7 @@
                         </div>
                     </div>
                 </form>
-                <form action="" class="create">
-                    <div>
-                        <div class="create-label">
-                            <label for="">Pergunta 2</label>
-                            <ion-icon name="create-outline" onclick="createNewQuestion(this)"></ion-icon>
-                        </div>
-                    </div>
-                </form>
-                <form action="" class="create">
-                    <div>
-                        <div class="create-label">
-                            <label for="">Pergunta 3</label>
-                            <ion-icon name="create-outline" onclick="createNewQuestion(this)"></ion-icon>
-                        </div>
-                    </div>
-                </form>
-                        
-                <button class="form-button" onclick="questionsSubmit(this)">Prosseguir para criar níveis</button>
+
             </article>
 
             <article class="form-list disabled">
