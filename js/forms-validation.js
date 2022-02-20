@@ -289,5 +289,5 @@ function createNewQuestion(obj, quantity){
 }
 
 function toggleView(obj){
-
+    obj.parentNode.parentNode.lastElementChild.classList.toggle("disabled")
 }
