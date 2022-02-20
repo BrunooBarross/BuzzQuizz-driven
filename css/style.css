@@ -359,6 +359,7 @@ input::placeholder{
     width: 688.16px;
 }
 .resposta{
+    cursor: pointer;
     width: 329.91px;
     height: 218.61px;
     margin-top: 20.16px;
