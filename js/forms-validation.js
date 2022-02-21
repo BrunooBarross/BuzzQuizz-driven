@@ -238,9 +238,9 @@ function createNewLevel(obj, quantity){
         <div>
             <div class="create-label">
                 <label for="">Nível ${i+2}</label>
-                <ion-icon name="create-outline" onclick="toggleView(this)"></ion-icon>
+                <ion-icon name="create-outline" onclick="toggleView(this)" data-identifier="expand"></ion-icon>
             </div>
-            <div class="disabled">
+            <div class="disabled" data-identifier="level">
                 <input type="text" placeholder="Título do nível">
                 <input type="number" placeholder="% de acerto mínima" value="0">
                 <input type="url" placeholder="URL da imagem do nível">
@@ -265,9 +265,9 @@ function createNewQuestion(obj, quantity){
             <div>
                 <div class="create-label">
                     <label for="">Pergunta ${i+2}</label>
-                    <ion-icon name="create-outline" onclick="toggleView(this)"></ion-icon>
+                    <ion-icon name="create-outline" onclick="toggleView(this)" data-identifier="expand"></ion-icon>
                 </div>
-                <div class="disabled">
+                <div class="disabled" data-identifier="question">
                     <div class="double-input-box question">
                         <input type="text" placeholder="Texto da pergunta" />
                         <input type="text" placeholder="Cor de fundo da pergunta" />
