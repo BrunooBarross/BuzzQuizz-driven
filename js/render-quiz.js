@@ -182,7 +182,7 @@ function renderizarResultado(){
                     `; 
                 break;   
                 }
-                if(resultadoUsuario=arrayNiveis[i].minValue){
+                if(resultadoUsuario==arrayNiveis[i].minValue){
                     postPergunta.innerHTML += `                     
                         <div class="resultado-final" data-identifier="quizz-result">
                             <div class="resultado">
