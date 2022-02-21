@@ -45,7 +45,7 @@ function renderizarQuizzes(quizz) {
             if(!ids.includes(quizzes[i].id)){
                 conteudo.innerHTML += `    
                     <div class="posts" onclick="exibirQuizz('${quizzes[i].id}')" data-identifier="quizz-card">
-                        <img src="${quizzes[i].image}" alt="">
+                        <img src="${quizzes[i].image}" alt="${quizzes[i].image}">
                         <p class="posts-titulo">${quizzes[i].title}</p>
                     </div>      
                 `;
@@ -70,9 +70,9 @@ function renderMyQuizzes(){
         for(j=0; j<quizzes.length;j++){
             if(parseInt(ids[i]) === parseInt(quizzes[j].id)){
                 myQuizzes.innerHTML += `
-                <div class="meus-quizzes" onclick="exibirQuizz('${quizzes[j].id}')" data-identifier="quizz-card">
-                    <img src="${quizzes[j].image}"
-                        alt="">
+                <div class="meus-quizzes" data-identifier="quizz-card">
+                    <img src="${quizzes[j].image}" onclick="exibirQuizz('${quizzes[j].id}')"
+                        alt="${quizzes[j].title}">
                     <span class="posts-titulo">${quizzes[j].title}</span>
                 </div>`
                 break
