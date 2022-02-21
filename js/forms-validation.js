@@ -7,7 +7,9 @@ let objQuizz = {
 }
 
 let ids = JSON.parse(localStorage.getItem('ids')) || []
+let keys = JSON.parse(localStorage.getItem('keys')) || []
 
+let key = []
 let id = 0
 
 function filledInputs(inputs, minimum){
@@ -203,12 +205,14 @@ function levelSubmit(button){
 
         id = obj.data.id
 
-        console.log(obj.data, id)
+        key = [id, obj.data.key]
 
         ids.push(id)
+        keys.push(key)
 
         getQuizzes()
         localStorage.setItem("ids", JSON.stringify(ids))
+        localStorage.setItem("keys", JSON.stringify(keys))
 
         finish_form.querySelector("img").setAttribute("src", obj.data.image)
         finish_form.querySelector("span").innerText = obj.data.title
@@ -226,8 +230,6 @@ function levelSubmit(button){
 function createNewLevel(obj, quantity){
 
     obj = obj.querySelectorAll(".form-list")[2]
-
-    console.log(obj)
 
     for(let i=0; i<quantity-1; i++){
         obj.innerHTML += 

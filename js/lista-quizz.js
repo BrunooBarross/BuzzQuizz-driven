@@ -70,10 +70,13 @@ function renderMyQuizzes(){
         for(j=0; j<quizzes.length;j++){
             if(parseInt(ids[i]) === parseInt(quizzes[j].id)){
                 myQuizzes.innerHTML += `
-                <div class="meus-quizzes" data-identifier="quizz-card">
+                <div class="meus-quizzes" data-identifier="quizz-card" id="${quizzes[j].id}">
                     <img src="${quizzes[j].image}" onclick="exibirQuizz('${quizzes[j].id}')"
                         alt="${quizzes[j].title}">
                     <span class="posts-titulo">${quizzes[j].title}</span>
+                    <div class="options-quizz">
+                        <ion-icon name="trash-outline" onclick="deleteQuizz(this)"></ion-icon>
+                    </div>
                 </div>`
                 break
             }
@@ -83,5 +86,33 @@ function renderMyQuizzes(){
     if(myQuizzes.querySelectorAll(".meus-quizzes").length !== 0){
         myQuizzes.parentNode.classList.remove("disabled")
         document.querySelector(".nav").classList.add("disabled")
+    }
+
+    // <ion-icon name="create-outline"></ion-icon>
+
+}
+
+function deleteQuizz(obj){
+
+    let id = obj.parentNode.parentNode.id
+    let keys = JSON.parse(localStorage.getItem('keys')) || []
+
+    for(let i=0; i<keys.length; i++){
+
+        if(id == keys[i][0]){
+            let promisse = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, { headers: {"Secret-Key": keys[i][1]}})
+            promisse.then(()=>{
+                console.log("Objeto deletado com sucesso")
+                for( let j = 0; j < keys.length; j++){ 
+                    if ( keys[j][0] == id) { 
+                        keys.splice(j, 1); 
+                    }
+                
+                }
+                localStorage.setItem("keys", JSON.stringify(keys))
+                getQuizzes()
+                return
+            })
+        }
     }
 }

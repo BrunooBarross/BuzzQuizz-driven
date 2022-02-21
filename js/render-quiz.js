@@ -18,7 +18,6 @@ function exibirQuizz(id) {
             quizzEscolhido = quizzes[i];
         }
     }
-    console.log(quizzEscolhido);
     postPergunta.innerHTML = `  
                     <div class="banner">
                     <img src=${quizzEscolhido.image}>

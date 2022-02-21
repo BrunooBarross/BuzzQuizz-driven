@@ -4,6 +4,8 @@ function redirectCreateQuizz(){
 }
 
 function redirectHomePage(){
+    document.querySelector(".form-list").classList.toggle("disabled")
+    document.querySelector(".finish-form").classList.toggle("disabled")
     getQuizzes()
     redirectCreateQuizz()
 }
