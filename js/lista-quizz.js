@@ -87,6 +87,10 @@ function renderMyQuizzes(){
         myQuizzes.parentNode.classList.remove("disabled")
         document.querySelector(".nav").classList.add("disabled")
     }
+    else{
+        myQuizzes.parentNode.classList.add("disabled")
+        document.querySelector(".nav").classList.remove("disabled")
+    }
 
     // <ion-icon name="create-outline"></ion-icon>
 
