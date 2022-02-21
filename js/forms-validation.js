@@ -75,6 +75,10 @@ function basicInfoSubmit(button){
     createNewQuestion(button.parentNode.parentNode, parseInt(inputs[2].value))
     createNewLevel(button.parentNode.parentNode, parseInt(inputs[3].value))
 
+    inputs.forEach(obj=>{
+        obj.value = ""
+    })
+
     let forms = button.parentNode.parentNode.querySelectorAll(".form-list")
     forms[0].classList.toggle("disabled")
     forms[1].classList.toggle("disabled")
@@ -231,6 +235,18 @@ function createNewLevel(obj, quantity){
 
     obj = obj.querySelectorAll(".form-list")[2]
 
+    obj.innerHTML = `<p class="title-form">Agora, decida os níveis</p>
+
+    <form action="">
+        <div data-identifier="level">
+            <label for="">Nível 1</label>
+            <input type="text" placeholder="Título do nível">
+            <input type="number" placeholder="% de acerto mínima" value="0" >
+            <input type="url" placeholder="URL da imagem do nível">
+            <input type="text" placeholder="Descrição do nível" class="text-area">
+        </div>
+    </form>`
+
     for(let i=0; i<quantity-1; i++){
         obj.innerHTML += 
     `
@@ -258,6 +274,35 @@ function createNewLevel(obj, quantity){
 function createNewQuestion(obj, quantity){
     
     obj = obj.querySelectorAll(".form-list")[1]
+
+    obj.innerHTML = `<p class="title-form">Crie suas perguntas</p>
+    <form action="">
+        <div data-identifier="question">
+            <label for="">Pergunta 1</label>
+            <div class="double-input-box question">
+                <input type="text" placeholder="Texto da pergunta" />
+                <input type="text" placeholder="Cor de fundo da pergunta" />
+            </div>
+            <label for="">Resposta correta</label>
+            <div class="double-input-box correct">
+                <input type="text" placeholder="Resposta correta" />
+                <input type="url" placeholder="URL da imagem" />
+            </div>
+            <label for="">Respostas incorretas</label>
+            <div class="double-input-box incorrect">
+                <input type="text" placeholder="Resposta incorreta 1" />
+                <input type="url" placeholder="URL da imagem 1" />
+            </div>
+            <div class="double-input-box incorrect">
+                <input type="text" placeholder="Resposta incorreta 2" />
+                <input type="url" placeholder="URL da imagem 2" />
+            </div>
+            <div class="double-input-box incorrect">
+                <input type="text" placeholder="Resposta incorreta 3" />
+                <input type="url" placeholder="URL da imagem 3" />
+            </div>
+        </div>
+    </form>`
 
     for(let i=0; i<quantity-1;i++){
     obj.innerHTML += `
