@@ -30,7 +30,7 @@ function exibirQuizz(id) {
     arrayQuestoes = quizzEscolhido.questions;    
     for(let i = 0; i < arrayQuestoes.length; i++){                  
         postPergunta.innerHTML += `                     
-            <div class="post-pergunta">
+            <div class="post-pergunta" data-identifier="question">
                 <div class="faixa-pergunta" style="background-color:${arrayQuestoes[i].color};">
                     <span>
                         ${arrayQuestoes[i].title}
@@ -47,7 +47,7 @@ function exibirQuizz(id) {
         postQuestoes = document.querySelector(".respostasI"+i);
         for(j = 0; j < arrayOpcoes.length; j++){
             postQuestoes.innerHTML += `                     
-                <div class="resposta resposta${j}" data-boolean=${arrayOpcoes[j].isCorrectAnswer} onclick="respostaUsuario(this)">
+                <div class="resposta resposta${j}" data-boolean=${arrayOpcoes[j].isCorrectAnswer} onclick="respostaUsuario(this)" data-identifier="answer">
                     <img src=${arrayOpcoes[j].image}>
                     <p>${arrayOpcoes[j].text}</p>
                 </div>       
@@ -124,7 +124,7 @@ function renderizarResultado(){
         for(let i = 1; i<arrayNiveis.length; i++){
             if(resultadoUsuario==arrayNiveis[0].minValue){
                 postPergunta.innerHTML += `                     
-                    <div class="resultado-final">
+                    <div class="resultado-final" data-identifier="quizz-result">
                         <div class="resultado">
                             <div class="faixa-resultado">
                                 <span>${arrayNiveis[0].title}</span>
@@ -144,7 +144,7 @@ function renderizarResultado(){
             }
             if(resultadoUsuario >= arrayNiveis[cont].minValue){
                 postPergunta.innerHTML += `                     
-                    <div class="resultado-final">
+                    <div class="resultado-final" data-identifier="quizz-result">
                         <div class="resultado">
                             <div class="faixa-resultado">
                                 <span>${arrayNiveis[cont].title}</span>
@@ -164,7 +164,7 @@ function renderizarResultado(){
             }else{
                 if(resultadoUsuario<arrayNiveis[i].minValue){
                     postPergunta.innerHTML += `                     
-                        <div class="resultado-final">
+                        <div class="resultado-final" data-identifier="quizz-result">
                             <div class="resultado">
                                 <div class="faixa-resultado">
                                     <span>${arrayNiveis[i-1].title}</span>
@@ -184,7 +184,7 @@ function renderizarResultado(){
                 }
                 if(resultadoUsuario=arrayNiveis[i].minValue){
                     postPergunta.innerHTML += `                     
-                        <div class="resultado-final">
+                        <div class="resultado-final" data-identifier="quizz-result">
                             <div class="resultado">
                                 <div class="faixa-resultado">
                                     <span>${arrayNiveis[i].title}</span>

@@ -31,7 +31,7 @@ function renderizarQuizzes(quizz) {
         for (let i = indexInicial - 1; i >= 0; i--) {
             if(!ids.includes(quizzes[i].id)){
                 conteudo.insertAdjacentHTML('afterbegin', `    
-                    <div class="posts" onclick="exibirQuizz('${quizzes[i].id}')">
+                    <div class="posts" onclick="exibirQuizz('${quizzes[i].id}')" data-identifier="quizz-card">
                         <img src="${quizzes[i].image}" alt="">
                         <p class="posts-titulo">${quizzes[i].title}</p>
                     </div>      
@@ -44,7 +44,7 @@ function renderizarQuizzes(quizz) {
         for (let i = 0; i < quizzes.length; i++) {
             if(!ids.includes(quizzes[i].id)){
                 conteudo.innerHTML += `    
-                    <div class="posts" onclick="exibirQuizz('${quizzes[i].id}')">
+                    <div class="posts" onclick="exibirQuizz('${quizzes[i].id}')" data-identifier="quizz-card">
                         <img src="${quizzes[i].image}" alt="">
                         <p class="posts-titulo">${quizzes[i].title}</p>
                     </div>      
@@ -70,7 +70,7 @@ function renderMyQuizzes(){
         for(j=0; j<quizzes.length;j++){
             if(parseInt(ids[i]) === parseInt(quizzes[j].id)){
                 myQuizzes.innerHTML += `
-                <div class="meus-quizzes" onclick="exibirQuizz('${quizzes[j].id}')">
+                <div class="meus-quizzes" onclick="exibirQuizz('${quizzes[j].id}')" data-identifier="quizz-card">
                     <img src="${quizzes[j].image}"
                         alt="">
                     <span class="posts-titulo">${quizzes[j].title}</span>

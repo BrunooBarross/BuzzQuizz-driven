@@ -24,16 +24,16 @@
         <main class="index">
             <nav class="nav" >
                 <span>Você não criou nenhum quizz ainda :(</span>
-                <button class="criar-quiz" onclick="redirectCreateQuizz()">Criar Quizz</button>
+                <button class="criar-quiz" onclick="redirectCreateQuizz()" data-identifier="create-quizz">Criar Quizz</button>
             </nav>
             <nav class="nav-quiz disabled">
-                <span class="nav-add">Seus Quizzes<ion-icon name="add-circle" onclick="redirectCreateQuizz()"></ion-icon></span>
-                <div class="nav-flex">
+                <span class="nav-add">Seus Quizzes<ion-icon name="add-circle" onclick="redirectCreateQuizz()" data-identifier="create-quizz"></ion-icon></span>
+                <div class="nav-flex" data-identifier="user-quizzes">
                 </div>
             </nav>
             <section class="secao">
                 <h2 class="titulo-h2">Todos os Quizzes</h2>
-                <article class="todos-quizzes">
+                <article class="todos-quizzes" data-identifier="general-quizzes">
                 </article>
             </section>
         </main>
